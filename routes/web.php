@@ -37,7 +37,7 @@ Route::group(['namespace'=>'Post'], function () {
     Route::delete('/posts/{post}', [\App\Http\Controllers\Post\DestroyController::class, '__invoke'])->name('post.delete');
 });
 
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->middleware('admin')->group(function (){
     Route::get('post',[IndexController::class,'__invoke'])->name('admin.post.index');
 });
 
